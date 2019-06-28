@@ -39,44 +39,45 @@
         </div>
       @endif
         <div class="box-body">
-          <form role="form" action="{{ route('course.store')}}" method="post">
+          <form role="form" action="{{ route('course.update',$cor->id)}}" method="post">
           {{-- <form role="form" id="catForm" method="post"> --}}
                 {{csrf_field()}}
+                {{method_field('PUT')}}
                 
                   <div class=" col-lg-offset-1 col-lg-6">
                       <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                        <input type="text" class="form-control" id="title" name="title" value="{{ $cor->title}}">
                       </div>
 
                        <div class="form-group">
                         <label for="subtitle">SubTitle</label>
-                        <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle">
+                        <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $cor->subTitle}}">
                        </div>
 
                        <div class="form-group">
                         <label for="author">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                        <input type="text" class="form-control" id="author" name="author" value="{{ $cor->created_by}}">
                        </div>
 
                        <div class="form-group">
                         <label for="descr">Description</label>
-                        <input type="text" class="form-control" id="descr" name="descr" placeholder="Description">
+                        <input type="text" class="form-control" id="descr" name="descr" value="{{ $cor->description}}">
                        </div>
 
                        <div class="form-group">
                         <label for="requirement">Requirement</label>
-                        <input type="text" class="form-control" id="requirement" name="requirement" placeholder="Requirement">
+                        <input type="text" class="form-control" id="requirement" name="requirement" value="{{ $cor->requirement}}">
                        </div>
 
                        <div class="form-group">
                         <label for="tar_audi">Targeted Audience</label>
-                        <input type="text" class="form-control" id="tar_audi" name="tar_audi" placeholder="Targeted Audience">
+                        <input type="text" class="form-control" id="tar_audi" name="tar_audi" value="{{ $cor->tar_audi}}">
                        </div>
 
                        <div class="form-group">
                         <label for="Playlist">Playlist Link</label>
-                        <input type="text" class="form-control" id="playlist" name="playlist" placeholder="Playlist Link">
+                        <input type="text" class="form-control" id="playlist" name="playlist" value="{{ $cor->playlist}}">
                        </div>
   
         					    <select  style="width: 506px; height:35px" class="productcategory" id="prod_cat_id" name="   catt">					  	

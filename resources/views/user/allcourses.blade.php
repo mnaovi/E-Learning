@@ -4,7 +4,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('user/styles/courses_responsive.css')}}">
 @endsection
 
-
 @section('category')
 
 <div>
@@ -53,9 +52,6 @@
 
 @endsection
 
-
-
-
 @section('home')
 <div class="home">
     <div class="breadcrumbs_container">
@@ -65,7 +61,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li>Courses</li>
+                            <li>All Courses</li>
                         </ul>
                     </div>
                 </div>
@@ -73,6 +69,7 @@
         </div>
     </div>			
 </div>
+
 
 
 <div class="courses">
@@ -96,15 +93,15 @@
                 <div class="courses_container">
                     <div class="row courses_row">
                         
-                        @foreach($courses as $co)
+                        @foreach($allcourse as $all)
                         <div class="col-lg-6 course_col">
                             <div class="course">
                                 <div class="course_image"><img src="images/course_4.jpg" alt=""></div>
                                 <div class="course_body">
-                                    <h3 class="course_title"><a href="{{ url('/coursedetails/'.$co->id) }}">{{$co->title}}</a></h3>
-                                    <div class="course_teacher">{{$co->created_by}}</div>
+                                    <h3 class="course_title"><a href="{{ url('/coursedetails/'.$all->id) }}">{{$all->title}}</a></h3>
+                                    <div class="course_teacher">{{$all->created_by}}</div>
                                     <div class="course_text">
-                                        <p>{{$co->description}}</p>
+                                        <p>{{$all->description}}</p>
                                     </div>
                                 </div>
                                 <div class="course_footer">

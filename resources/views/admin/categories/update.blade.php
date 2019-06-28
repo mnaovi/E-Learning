@@ -12,13 +12,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        SkilledB
+        <small>Furute of education technology</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Admin</a></li>
+        <li><a href="#">Category</a></li>
       </ol>
     </section>
 
@@ -29,21 +28,22 @@
       <div class="box">
 
         <div class="box-body">
-          <form role="form" action="{{ route('event.store')}}" method="post">
+          <form role="form" action="{{ route('category.update',$cat->id)}}" method="post">
                 {{csrf_field()}}
-                
+                {{method_field('PUT')}}
                   <div class=" col-lg-offset-1 col-lg-6">
                       <div class="form-group">
                         <label for="name">Category</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Category">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ $cat->category_name}}">
                        </div>
 
                        <div class="form-group">
                          
                           <lebel>Parent Category</lebel>
                           <select class="form-control" name="parent_id" id="">
-                            @foreach($parent as $pa)
-                            <option value="{{ $pa->id }}">{{ $pa->category_name }}</option>
+                            <option value="null">None</option>
+                            @foreach($allcat as $all)
+                            <option value="{{ $all->id }}">{{ $all->category_name }}</option>
                             @endforeach
                           </select>
 
