@@ -1,3 +1,4 @@
+
 @extends('user/app')
 
 @section('css')
@@ -64,8 +65,8 @@
                 <div class="col">
                     <div class="breadcrumbs">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="courses.html">Contact</a></li>
+                            <li><a href="">{{$course->title}}</a></li>
+                            <li><a href="">Videos</a></li>
                             
                         </ul>
                     </div>
@@ -79,28 +80,17 @@
 <div class="container">
 	<div class="row">
 		
-		<div class="col-lg-7">
-			<h2>Offline Location</h2>
-			<!--map-->
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.405718203368!2d90.30901191435092!3d23.875227789914494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c259fa853253%3A0xeb42feba436deb20!2sDaffodil+International+University%2C+Bangladesh!5e0!3m2!1sen!2sbd!4v1558854126980!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-			
-		</div>
 
-		<div class="col-lg-5">
-			<h2>Offline Location</h2>
-			<div class="card">
-				<div class="card-body">
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-					<h2>Offline Location</h2>
-				</div>
+		<div class="col-lg-10">
+			<h2>All Videos</h2>
+			<div >
+				@foreach ($vdo as $vd) 
+				  {{$vd->title}}
+				  <a class="btn btn-danger" href="">Download file</a>
+					<br>
+					<br>
+				@endforeach
+				
 			</div>
 			
 		</div>

@@ -17,7 +17,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Instructor</a></li>
-        <li><a href="#">Course</a></li>
+        <li><a href="#">Video</a></li>
       </ol>
     </section>
 
@@ -39,57 +39,35 @@
         </div>
       @endif
         <div class="box-body">
-          <form role="form" action="{{ route('icourse.update',$cor->id)}}" method="post">
+          <form role="form" action="{{ route('video.update',$video->id)}}" method="post">
           {{-- <form role="form" id="catForm" method="post"> --}}
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 
                   <div class=" col-lg-offset-1 col-lg-6">
                       <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="{{ $cor->title}}">
+                       <label for="title">Title</label>
+                       <input type="text" class="form-control" name="title" id="title" value="{{$video->title}}">
                       </div>
 
-                       <div class="form-group">
-                        <label for="subtitle">SubTitle</label>
-                        <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $cor->subTitle}}">
-                       </div>
+                      <div class="form-group">
+                       <label for="course">Course Name</label>
+                       <select class="form-control" name="course" id="course">
+                         @foreach ($courses as $course)
+                         
+                           <option value="{{$course->id}}">{{$course->title}}</option>
+                         @endforeach
+                       </select>
+                      </div>
 
-                       <div class="form-group">
-                        <label for="descr">Description</label>
-                        <input type="text" class="form-control" id="descr" name="descr" value="{{ $cor->description}}">
-                       </div>
-
-                       <div class="form-group">
-                        <label for="requirement">Requirement</label>
-                        <input type="text" class="form-control" id="requirement" name="requirement" value="{{ $cor->requirement}}">
-                       </div>
-
-                       <div class="form-group">
-                        <label for="tar_audi">Targeted Audience</label>
-                        <input type="text" class="form-control" id="tar_audi" name="tar_audi" value="{{ $cor->tar_audi}}">
-                       </div>
-  
-        					    <select  style="width: 506px; height:35px" class="productcategory" id="prod_cat_id" name="   catt">					  	
-        						  	<option value="0" disabled="true" selected="true">-Select-Category-</option>
-        						  	@foreach($prod as $cat)
-        						  		<option value="{{$cat->id}}" id="maincat">{{$cat->category_name}}</option>
-        						  	@endforeach
-        						  </select>
-                     
-        						  <select  style="width: 506px; height:35px" class="productname" name="subcatt">
-        						  	<option value="0" disabled="true"  selected="true" id="subcat">-Select-SubCategory-</option>
-        						  </select>
-                        
-        						  
-        						  <select  style="width: 506px; height:35px" class="product" name="subsubcatt">
-
-        						  	<option value="0" disabled="true"  selected="true" id="subsubcat">-Select-SubSubCategory-</option>
-        						  </select>
+                      <div class="form-group">
+                       <label for="video">Video</label>
+                       <input class="form-control" type="file" name="video" id="video">
+                      </div>
               
                       <div class="form-group">
                        <button type="submit" class="btn btn-primary" id="saveBtn">Add</button>
-                       <a class="btn btn-danger" href="{{ route('icourse.index')}}">Back</a>
+                       <a class="btn btn-danger" href="{{ route('video.index')}}">Back</a>
                       </div>
                   </div>
             
