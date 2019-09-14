@@ -17,7 +17,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Instructor</a></li>
-        <li><a href="#">Course</a></li>
+        <li><a href="#">Quizzes</a></li>
       </ol>
     </section>
 
@@ -27,17 +27,11 @@
       <!-- Default box -->
       <div class="box">
 
-        <div class="box-body">
-          
-            <a class="col-lg-offset-5 btn btn-primary" href="">Your Instructed Course</a>
-
-        </div>
-
 
         <div class="box-body">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">course That are already exist</h3>
+              <h3 class="box-title">Answers that are already exist</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -45,36 +39,19 @@
                 <thead>
                 <tr>
                   <th>S No</th>
-                  <th>Course Title</th>
-                  <th>Course Instructor</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th>Quiz Title</th>
+                  <th>Quiz Question</th>
+                  <th>Evaluate Script</th>
                 </tr>
                 </thead>
                 <tbody>
                    
-                   @foreach ($courses as $cor)
+                   @foreach ($answers as $vid)
                     <tr>
                       <td>{{$loop->index+1}}</td>
-                      <td>{{$cor->title}}</td>
-                      <td>{{$cor->created_by}}</td>
-                      <td><a href="{{ route('icourse.edit',$cor->id)}}"><i class="fa fa-fw fa-edit"></i></a></td>
-                      <td>
-                        <form id="cat-delete-form-{{$cor->id}}" action="{{ route('icourse.destroy',$cor->id)}}" method="post" style="display: none" >
-                          
-                          {{csrf_field()}}
-                          {{method_field('DELETE')}}
-
-                        </form>
-                        <a href="#" onclick="if(confirm('Do You Want To Delete')){
-                           
-                           event.preventDefault();
-                           document.getElementById('cat-delete-form-{{$cor->id}}').submit();
-
-                        }else{
-                          event.preventDefault();
-                        }"><i class="fa fa-fw fa-trash"></i></a>
-                      </td>
+                      <td>{{$vid->title}}</td>
+                      <td>{{$vid->question}}</td>
+                      <td><a href="{{ route('single',$vid->id)}}"><i class="fa fa-fw fa-edit"></i></a></td>
                     </tr>
                    @endforeach
                
@@ -82,10 +59,9 @@
                 <tfoot>
                 <tr>
                   <th>S No</th>
-                  <th>Course Title</th>
-                  <th>Course Instructor</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th>Quiz Title</th>
+                  <th>Quiz Question</th>
+                  <th>Evaluate Script</th>
                 </tr>
                 </tfoot>
               </table>

@@ -17,7 +17,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Instructor</a></li>
-        <li><a href="#">Course</a></li>
+        <li><a href="#">Quizzes</a></li>
       </ol>
     </section>
 
@@ -29,7 +29,7 @@
 
         <div class="box-body">
           
-            <a class="col-lg-offset-5 btn btn-primary" href="">Your Instructed Course</a>
+            <a class="col-lg-offset-5 btn btn-primary" href="{{ route('quiz.create')}}">Add New Quiz</a>
 
         </div>
 
@@ -37,7 +37,7 @@
         <div class="box-body">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">course That are already exist</h3>
+              <h3 class="box-title">Quizzes that are already exist</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -45,22 +45,22 @@
                 <thead>
                 <tr>
                   <th>S No</th>
-                  <th>Course Title</th>
-                  <th>Course Instructor</th>
+                  <th>Quiz Title</th>
+                  <th>Quiz Question</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                    
-                   @foreach ($courses as $cor)
+                   @foreach ($quizzes as $vid)
                     <tr>
                       <td>{{$loop->index+1}}</td>
-                      <td>{{$cor->title}}</td>
-                      <td>{{$cor->created_by}}</td>
-                      <td><a href="{{ route('icourse.edit',$cor->id)}}"><i class="fa fa-fw fa-edit"></i></a></td>
+                      <td>{{$vid->title}}</td>
+                      <td>{{$vid->question}}</td>
+                      <td><a href="{{ route('quiz.edit',$vid->id)}}"><i class="fa fa-fw fa-edit"></i></a></td>
                       <td>
-                        <form id="cat-delete-form-{{$cor->id}}" action="{{ route('icourse.destroy',$cor->id)}}" method="post" style="display: none" >
+                        <form id="cat-delete-form-{{$vid->id}}" action="{{ route('quiz.destroy',$vid->id)}}" method="post" style="display: none" >
                           
                           {{csrf_field()}}
                           {{method_field('DELETE')}}
@@ -69,7 +69,7 @@
                         <a href="#" onclick="if(confirm('Do You Want To Delete')){
                            
                            event.preventDefault();
-                           document.getElementById('cat-delete-form-{{$cor->id}}').submit();
+                           document.getElementById('cat-delete-form-{{$vid->id}}').submit();
 
                         }else{
                           event.preventDefault();
@@ -82,8 +82,8 @@
                 <tfoot>
                 <tr>
                   <th>S No</th>
-                  <th>Course Title</th>
-                  <th>Course Instructor</th>
+                  <th>Quiz Title</th>
+                  <th>Quiz Question</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
